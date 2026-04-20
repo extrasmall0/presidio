@@ -33,7 +33,8 @@ def entities():
         ("my ip: ::1", 1, ((7, 10),), ((0.6, 0.81),),),
         ("connecting from ::1", 1, ((16, 19),), ((0.6, 0.81),),),
         # bare :: and ::1 in same string should each match once
-        ("src=:: dst=::1", 2, ((4, 6), (11, 14)), ((0.05, 0.15), (0.6, 0.81)),),
+        # analyzer results are returned by descending score, so ::1 comes first
+        ("src=:: dst=::1", 2, ((11, 14), (4, 6)), ((0.6, 0.81), (0.05, 0.15)),),
         # fmt: on
     ],
 )
